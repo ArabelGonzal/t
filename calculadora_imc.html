@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<HTML>
+	<HEAD>
+		<TITLE>Calculo IMC</TITLE>
+    <link rel="stylesheet" href="stylessss.css"> 
+	</HEAD>
+	<BODY>
+<style>
+body {
+    background-image: url(src/fondo_imc.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+}	
+img#izquierda 
+{
+    position: absolute;
+    height: 150px;
+    width: 300px;
+    left: 0px;
+}
+img#derecha
+{
+    position: absolute;
+    height: 150px;
+    width: 300px;
+    right: 0px;
+}
+input#altura {
+	color: sienna;
+    border-style: double;
+    border-width: thick;
+	border-color: #fffca5;
+	background: #fffca5a6;
+}
+input#peso {
+	color: sienna;
+    border-style: double;
+    border-width: thick;
+	border-color: #fffca5;
+	background: #fffca5a6;
+}
+button {
+	color: sienna;
+    border-style: double;
+    border-width: thick;
+	border-color: #fffca5;
+	background: #fffca5a6;
+}
+h2#resu {
+    text-align: center;
+    color: #fffca5;
+    font-size: xx-large;
+}
+	h1 {
+    color: rgb(255 181 0);
+    font-size: 42px;
+    background: #fffca5;
+    border-radius: 50px;
+    inline-size: 900px;
+    font-style: normal;
+}
+p {
+    background: #fffca5;
+    border-radius: 30px;
+    font-size: larger;
+    font-family: cursive;
+    color: sienna;
+}
+</style>
+<img id="izquierda"
+src="src/adicional_imc.gif"
+alt="uno">
+
+<img id="derecha"
+src="src/adicional_imc2.gif"
+alt="dos">
+		<center>
+      <h1 style="color: sienna" >CALCULADORA ÍNDICE DE MASA CORPORAL</h1>
+     
+    <form action="" onsubmit="calcular_imc(event)">
+			<input type="number" name="altura" id="altura" onchange="calcular_imc(event)" autofocus>
+			<input type="number" name="peso" id="peso" onchange="calcular_imc(event)"autofocus>
+			<button type="submit" button style="color:sienna">calcular imc </button>
+    
+		</form>
+		
+  </center>
+
+ <p>
+	El Índice de Masa Corporal (IMC) es una medida utilizada para evaluar si el peso de una persona está dentro de un rango saludable en relación con su altura. Se calcula a través de una fórmula matemática que divide el peso de una persona en kilogramos entre el cuadrado de su altura en metros. Aunque el IMC no mide directamente la cantidad de grasa corporal, se considera una herramienta útil para identificar posibles riesgos asociados con el peso, como enfermedades cardiovasculares, diabetes y otros trastornos relacionados con el peso.
+ </p>
+		<h2 id="resu"></h2>
+		<div style="height: 210px;">
+            <img id="src" src="">
+        </div>
+    </center>
+    <SCRIPT type="text/javascript">
+function calcular_imc(event){
+        event.preventDefault();
+        var altura= 
+        document.getElementById("altura").value/100;
+        var peso=
+        document.getElementById("peso").value;
+        var imc= peso/(altura*altura);
+        document.getElementById ("resu").innerText= "IMC=" + imc.toFixed(2);
+}
+    </SCRIPT>
+</BODY>
+</HTML>
