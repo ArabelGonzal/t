@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Calculadora de Conversiones de Longitud</title>
+<link rel="stylesheet" href="src/css/estilo.css">
+</head>
+
+<style>
+body {
+    background-image: url(src/fondo_de_perros.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+img#perrito2 {
+    height: 90px;
+    width: 90px;
+    position: absolute;
+    right: 180px;
+    top: 25px;
+}
+img#perro1 {
+    height: 90px;
+    width: 90px;
+    position: absolute;
+    left: 180px;
+    top: 25px;
+}
+input#inputValue {
+    border-color: rgb(182, 123, 15);
+    border-width: thick;
+}
+select#fromUnit {
+    border-color:rgb(182, 123, 15);
+    border-width: thick;
+}
+select#toUnit {
+    border-color:rgb(182, 123, 15);
+    border-width: thick;
+}
+select#fromUnit {
+    font-family: monospace;
+    color: #9a7c54;
+    border-style: outset;
+    border-width: initial;
+}
+input#inputValue {
+    font-family: monospace;
+    color: #9a7c54;
+    border-style: outset;
+    border-width: initial;
+}
+select#toUnit {
+    font-family: monospace;
+    color: #9a7c54;
+    border-style: outset;
+    border-width: initial;
+}
+button {
+    border-color: rgb(182, 123, 15);
+    border-width: medium;
+    border-style: outset;
+    border-width: initial;
+}
+button {
+    font-family: monospace;
+    color: #9a7c54;
+    background: white;
+}
+.calculator {
+    color: #e48500;
+    font-size: x-large;
+    font-family: monospace;
+}
+h3#result {
+    inline-size: 1000px;
+    display: inline-block;
+    border-style: dashed;
+}
+h3#result {
+    background: #ffde96;
+    border-radius: 50px;
+    font-size: xx-large;
+    color: rgb(182, 123, 15);
+    font-family: monospace;
+}
+h2 {
+    color:rgb(182, 123, 15);
+    text-align:center;
+    font-size: -webkit-xxx-large;
+    font-family:monospace;
+}
+h2 {
+    background: #ffde96;
+    padding: 10px;
+    border-radius: 0px;
+    border: dashed;
+}
+.calculator {
+    text-align: center;
+}
+</style>
+
+<img id="perro1"
+src="src/spinning_dog.gif"
+alt="perrito1">
+
+<img id="perrito2"
+src="src/spinning_dog2.gif"
+alt="perrito2">
+
+<div class="calculator">
+    <h2>Calculadora de Conversiones de Longitud</h2>
+    <input type="number" id="inputValue"    
+    label for="fromUnit">De:</label>
+    <select id="fromUnit">
+        <option value="km">Kilómetros</option>
+        <option value="m">Metros</option>
+        <option value="cm">Centímetros</option>
+        <option value="mm">Milímetros</option>
+    </select>
+    <label for="toUnit">A:</label>
+    <select id="toUnit">
+        <option value="km">Kilómetros</option>
+        <option value="m">Metros</option>
+        <option value="cm">Centímetros</option>
+        <option value="mm">Milímetros</option>
+    </select>    
+    <button onclick="convert()">Convertir</button>   
+    <h3 id="result">Resultado: </h3>
+</div>
+<script>
+    function convert() {
+        const inputValue = parseFloat(document.getElementById('inputValue').value);
+        const fromUnit = document.getElementById('fromUnit').value;
+        const toUnit = document.getElementById('toUnit').value;        
+        if (isNaN(inputValue)) {
+            document.getElementById('result').innerText = "Por favor, ingresa un valor numérico.";
+            return;
+        }
+        const conversionFactors = {
+            km: 1000000, 
+            m: 1000,     
+            cm: 10,      
+            mm: 1        
+        };
+        const valueInMicrometers = inputValue * conversionFactors[fromUnit];        
+        const convertedValue = valueInMicrometers / conversionFactors[toUnit];
+        document.getElementById('result').innerText =  `Resultado: ${convertedValue} ${toUnit} `;
+    }
+</script>
+</body>
+</html>
